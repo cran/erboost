@@ -27,7 +27,15 @@ methods for computing the relative influence in \code{\link{summary.erboost}}.
 Returns an unprocessed vector of estimated relative influences.
 }
 \references{
-Y. Yang and H. Zou (2012) \dQuote{Nonparametric Multivariate Expectile Regression via ER-Boost,} submitted to \emph{Journal of Business & Economic Statistics}.
+Yang, Y. and Zou, H. (2013), \dQuote{Nonparametric Multiple Expectile Regression via ER-Boost,} \emph{Journal of Statistical Computation and Simulation}. Accepted.
+
+BugReport: \url{http://code.google.com/p/erboost/}\cr
+
+G. Ridgeway (1999). \dQuote{The state of boosting,} \emph{Computing Science and
+Statistics} 31:172-181.
+
+\url{http://cran.r-project.org/web/packages/gbm/}\cr
+
 
 J.H. Friedman (2001). "Greedy Function Approximation: A Gradient Boosting
 Machine," Annals of Statistics 29(5):1189-1232.

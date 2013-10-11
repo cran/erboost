@@ -14,15 +14,12 @@
 //  Owner:      gregr@rand.org
 //
 //  History:    2/14/2003   gregr created
-//              6/11/2007   gregr added quantile regression
-//                          written by Brian Kriegler
 //
 //------------------------------------------------------------------------------
 
 #include<vector>
 #include "dataset.h"
 #include "distribution.h"
-#include "quantile.h"
 #include "expectile.h"
 #include "erboost_engine.h"
 

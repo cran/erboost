@@ -40,16 +40,8 @@ unsigned long erboost_setup
     }
 
     // set the distribution
-    if(strncmp(pszFamily,"quantile",2) == 0)
-    {
-        pDist = new CQuantile(adMisc[0]);
-        if(pDist==NULL)
-        {
-            hr = erboost_OUTOFMEMORY;
-            goto Error;
-        }
-    }
-    else if(strncmp(pszFamily,"expectile",2) == 0)
+
+    if(strncmp(pszFamily,"expectile",2) == 0)
     {
         pDist = new CExpectile(adMisc[0]);
         if(pDist==NULL)
