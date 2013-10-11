@@ -1,5 +1,6 @@
 94d55d512a9ba36caa9b7df079bae19f *COPYING
-33007f935f7f4ae618a3327c62aae4bf *DESCRIPTION
+7b25fafd8f2e90b3621dd1bcb93e1584 *ChangeLog
+4fb03001f23d788596275fa688685ef2 *DESCRIPTION
 8316b091e7c365b61769fd7c05e1d3c8 *NAMESPACE
 e4eeff26f1b37aea7485624dc1d1de75 *R/erboost.R
 a6813b6bf75490ca9081c8cdf94ed4de *man/erboost.Rd
@@ -19,7 +20,7 @@ fa6e05dbbaead164a78df68fe377510f *src/dataset.cpp
 f0428ce3f626bf4ed96ccb6c40ab62b8 *src/erboost_engine.cpp
 57089f9c1c7d8ccfd60cd558fccf40a7 *src/erboost_engine.h
 a4144e7dceb1ecaf0e1ddf3e7d85f566 *src/erboostentry.cpp
-bd3c2dde37dc1675b6e2824b40c76f2f *src/expectile.cpp
+bafff7c70d45f22e31b44cad4b6e03bd *src/expectile.cpp
 8567e128b27c7f70cd58047d0f51df2d *src/expectile.h
 39094967ceaabf7c744bc93d0b86d22f *src/matrix.h
 f244f5af3854c3b00855916577605c4a *src/node.cpp

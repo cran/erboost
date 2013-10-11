@@ -142,7 +142,7 @@ erboostRESULT CExpectile::InitF
              while (end>begin+1) 
              {
                      Deviance=0;
-                     test=floor((begin+end)/2);
+                     test=floor(double(begin+end)/2.0);
                      for (unsigned long j=0; j<test; j++)
                      {
                              Deviance += (1.0-dAlpha)*(Yorder[j]-Yorder[test]);
@@ -245,7 +245,7 @@ erboostRESULT CExpectile::FitBestConstant
                      while (end>begin+1) 
                      {
                              Deviance=0;
-                             test=floor((begin+end)/2);
+                             test=floor(double(begin+end)/2.0);
                              for (unsigned long j=0; j<test; j++)
                              {
                                      Deviance += (1.0-dAlpha)*(vecadDiff[iNode][j]-vecadDiff[iNode][test]);
