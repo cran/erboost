@@ -10,8 +10,8 @@ erboost(formula = formula(data),
     data = list(),
     weights,
     var.monotone = NULL,
-    n.trees = 100,
-    interaction.depth = 1,
+    n.trees = 3000,
+    interaction.depth = 3,
     n.minobsinnode = 10,
     shrinkage = 0.001,
     bag.fraction = 0.5,
@@ -26,8 +26,8 @@ erboost.fit(x,y,
         distribution = list(name="expectile",alpha=0.5),
         w = NULL,
         var.monotone = NULL,
-        n.trees = 100,
-        interaction.depth = 1,
+        n.trees = 3000,
+        interaction.depth = 3,
         n.minobsinnode = 10,
         shrinkage = 0.001,
         bag.fraction = 0.5,
@@ -38,7 +38,7 @@ erboost.fit(x,y,
         response.name = NULL)
 
 erboost.more(object,
-         n.new.trees = 100,
+         n.new.trees = 3000,
          data = NULL,
          weights = NULL,
          offset = NULL,
@@ -70,12 +70,16 @@ predictors, indicating which variables have a monotone increasing (+1),
 decreasing (-1), or arbitrary (0) relationship with the outcome.}
 \item{n.trees}{the total number of trees to fit. This is equivalent to the
 number of iterations and the number of basis functions in the additive
-expansion.}
+expansion. The default number is 3000. \bold{Users should not always use the default value, but choose 
+the appropriate value of \code{n.trees} based on their data.} Please see "details" section below.}
 \item{cv.folds}{Number of cross-validation folds to perform. If \code{cv.folds}>1 then
 \code{erboost}, in addition to the usual fit, will perform a cross-validation, calculate
 an estimate of generalization error returned in \code{cv.error}.}
 \item{interaction.depth}{The maximum depth of variable interactions. 1 implies
-an additive model, 2 implies a model with up to 2-way interactions, etc.}
+an additive model, 2 implies a model with up to 2-way interactions, etc. 
+The default value is 3. \bold{Users should not always use the default value, but choose 
+the appropriate value of \code{interaction.depth} based on their data.}
+ Please see "details" section below.}
 \item{n.minobsinnode}{minimum number of observations in the trees terminal
 nodes. Note that this is the actual number of observations not the total
 weight.}
@@ -97,7 +101,7 @@ subsequent calls to \code{\link{erboost.more}} faster at the cost of storing an
 extra copy of the dataset.}
 \item{object}{a \code{erboost} object created from an initial call to
 \code{\link{erboost}}.}
-\item{n.new.trees}{the number of additional trees to add to \code{object}.}
+\item{n.new.trees}{the number of additional trees to add to \code{object}. The default number is 3000.}
 \item{verbose}{If TRUE, erboost will print out progress and performance indicators.
 If this option is left unspecified for erboost.more then it uses \code{verbose} from
 \code{object}.}
@@ -117,7 +121,7 @@ variable.}
 
 }
 \details{
-Expectile regression (Newey & Powell 1987) is a nice tool for estimating the conditional expectiles of a response variable given a set of covariates. This package implements a regression tree based gradient boosting estimator for nonparametric multiple expectile regression. The code is a modified version of \code{gbm} library (\url{http://cran.r-project.org/web/packages/gbm/}) originally written by Greg Ridgeway.
+Expectile regression (Newey & Powell 1987) is a nice tool for estimating the conditional expectiles of a response variable given a set of covariates. This package implements a regression tree based gradient boosting estimator for nonparametric multiple expectile regression. The code is a modified version of \code{gbm} library (\url{https://cran.r-project.org/package=gbm}) originally written by Greg Ridgeway.
 
 Boosting is the process of iteratively adding basis functions in a greedy
 fashion so that each additional basis function further reduces the selected
@@ -128,6 +132,8 @@ In addition to many of the features documented in the Gradient Boosting Machine,
 \code{erboost} offers additional features including the out-of-bag estimator for
 the optimal number of iterations, the ability to store and manipulate the
 resulting \code{erboost} object.
+
+Concerning tuning parameters, \bold{\code{interaction.depth}} and \bold{\code{n.trees}} are two of the most important tuning parameters in \pkg{erboost}. \bold{Users should not always use the default values of those two parameters, instead they should choose the appropriate values of \code{interaction.depth} and \code{n.trees} according to their data.} For example, if \code{n.trees}, which is the maximal number of trees to fit, is set to be too small, then it is possible that the actual optimal number of trees (which is \code{best.iter} selected by the function \code{erboost.perf} in "example" section) for a particular data  exceeds this number, resulting a sub-optimal model. \bold{Therefore, users should always fit the model with a large enough \code{n.trees} such that \code{n.trees} is greater than the potential optimal number of trees. The same principle also applies on \code{interaction.depth}}.
 
 \code{erboost.fit} provides the link between R and the C++ erboost engine. \code{erboost}
 is a front-end to \code{erboost.fit} that uses the familiar R modeling formulas.
@@ -141,14 +147,14 @@ For general practice \code{erboost} is preferable.
 \code{\link{erboost.object}}.
 }
 \references{
-Yang, Y. and Zou, H. (2013), \dQuote{Nonparametric Multiple Expectile Regression via ER-Boost,} \emph{Journal of Statistical Computation and Simulation}. Accepted.
+Yang, Y. and Zou, H. (2015), \dQuote{Nonparametric Multiple Expectile Regression via ER-Boost,} \emph{Journal of Statistical Computation and Simulation}, 84(1), 84-95.
 
-BugReport: \url{http://code.google.com/p/erboost/}\cr
+
 
 G. Ridgeway (1999). \dQuote{The state of boosting,} \emph{Computing Science and
 Statistics} 31:172-181.
 
-\url{http://cran.r-project.org/web/packages/gbm/}\cr
+\url{https://cran.r-project.org/package=gbm}\cr
 
 J.H. Friedman (2001). \dQuote{Greedy Function Approximation: A Gradient Boosting
 Machine,} \emph{Annals of Statistics} 29(5):1189-1232.

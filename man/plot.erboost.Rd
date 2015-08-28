@@ -47,14 +47,14 @@ graphics and only returns the grid of evaluation points and their average
 predictions.
 }
 \references{
-Yang, Y. and Zou, H. (2013), \dQuote{Nonparametric Multiple Expectile Regression via ER-Boost,} \emph{Journal of Statistical Computation and Simulation}. Accepted.
+Yang, Y. and Zou, H. (2015), \dQuote{Nonparametric Multiple Expectile Regression via ER-Boost,} \emph{Journal of Statistical Computation and Simulation}, 84(1), 84-95.
 
-BugReport: \url{http://code.google.com/p/erboost/}\cr
+
 
 G. Ridgeway (1999). \dQuote{The state of boosting,} \emph{Computing Science and
 Statistics} 31:172-181.
 
-\url{http://cran.r-project.org/web/packages/gbm/}\cr
+\url{https://cran.r-project.org/package=gbm}\cr
 
 
 J.H. Friedman (2001). "Greedy Function Approximation: A Gradient Boosting
