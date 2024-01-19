@@ -750,7 +750,8 @@ erboost.perf <- function(object,
 
    if(plot.it)
    {
-      par(mar=c(5,4,4,4)+.1)
+ 	  opar <- par(mar=c(5,4,4,4)+.1)
+ 	  on.exit(par(opar))
       ylab <- "Expectile loss"
       if(object$train.fraction==1)
       {
@@ -779,7 +780,8 @@ erboost.perf <- function(object,
       {
          if(overlay)
          {
-            par(new=TRUE)
+			opar <- par(new=TRUE)
+			on.exit(par(opar))
             plot(smoother$x,
                  cumsum(smoother$y),
                  col="blue",
